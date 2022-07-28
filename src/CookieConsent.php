@@ -229,6 +229,7 @@ class CookieConsent
 
             // Add default settings
             $data = array(
+                'theme' => '',
                 // consent modal
                 'layout' => 'cloud',               // box/cloud/bar
                 'position' => 'bottom center',     // bottom/middle/top + left/right/center
