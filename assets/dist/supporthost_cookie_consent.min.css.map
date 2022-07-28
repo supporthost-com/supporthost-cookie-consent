@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,2BAA4B,CACxB,OAAO,CAAE,IAAI,CACb,MAAM,CAAE,cAAc,CAG1B,mBAAoB,CAChB,OAAO,CAAE,IAAI,CACb,SAAS,CAAE,CAAC,CACZ,eAAe,CAAE,KAAK,CAEtB,4BAAW,CACP,OAAO,CAAE,IAAI,CACb,SAAS,CAAE,CAAC,CACZ,WAAW,CAAE,GAAG,CAChB,UAAU,CAAE,IAAkB,CAC9B,UAAU,CAAE,6FAAuI,CAGvJ,wBAAO,CACH,MAAM,CAAE,gBAAgB",
+"sources": ["../src/supporthost_cookie_consent.scss"],
+"names": [],
+"file": "supporthost_cookie_consent.min.css"
+}

@@ -1,0 +1,24 @@
+[data-iframe-cookie-needed] {
+    display: flex;
+    border: 1px solid #ddd;
+}
+
+.iframe-placeholder {
+    display: flex;
+    flex-grow: 1;
+    background-size: cover;
+
+    &__overlay {
+        display: flex;
+        flex-grow: 1;
+        align-items: end;
+        background: rgb(255, 255, 255);
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 20%, rgba(255, 255, 255, 1) 70%, rgba(255, 255, 255, 1) 100%);
+    }
+
+    &__btn {
+        margin: 0 auto 30px auto;
+    }
+}
+
+

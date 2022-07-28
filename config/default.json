@@ -1,0 +1,297 @@
+{
+  "status": "enabled",
+  "it": {
+    "consent_modal": {
+      "title": "Usiamo i cookies! <span class=\"font-weight-normal\">\ud83c\udf6a<\/span>",
+      "description": "Aiutaci a migliorare il nostro sito web! Premendo il pulsante \"Accetta tutti\", si acconsente ad accettare i cookie per migliorare i nostri servizi e l'analisi del traffico. È possibile modificare il proprio consenso cliccando sul <pulsante type=\"button\" data-cc=\"c-settings\" class=\"cc-link\">impostazioni cookie</button>.",
+      "primary_btn": {
+        "text": "Accetta tutti",
+        "role": "accept_all"
+      },
+      "secondary_btn": {
+        "text": "Rifiuta tutti",
+        "role": "accept_necessary"
+      }
+    },
+    "settings_modal": {
+      "title": "Preferenze cookies",
+      "save_settings_btn": "Salva impostazioni",
+      "accept_all_btn": "Accetta tutti",
+      "reject_all_btn": "Rifiuta tutti",
+      "close_btn_label": "Chiudi",
+      "blocks": [
+        {
+          "title": "",
+          "description": "Utilizziamo i cookie per garantire le funzionalità di base del sito web e per migliorarlo continuamente. È possibile acconsentire all'uso dei cookie in blocco o per singole categorie. Il consenso può essere revocato in qualsiasi momento. Per maggiori informazioni consulta la <a href=\"\/en\/gdpr-general-regulation-of-the-personal-data-protection\/\" class=\"cc-link\">Privacy Policy<\/a>. Se hai dubbi o domande sei invitato a <a class=\"cc-link\" href=\"\/en\/contatto\/\">contattarci<\/a> per qualsiasi domanda sui cookie o sulla protezione dei dati."
+        },
+        {
+          "title": "Cookies necessari",
+          "description": "Questi cookies sono necessari per le funzionalità di base del sito web e non possono essere rifiutati.",
+          "cookie_table": [
+            {
+              "col1": "",
+              "col2": "",
+              "col3": "",
+              "col4": ""
+            }
+          ],
+          "toggle": {
+            "value": "necessary",
+            "enabled": true,
+            "readonly": true
+          }
+        },
+        {
+          "title": "Cookies analitici e di performance",
+          "description": "Grazie a questi cookie, siamo in grado di monitorare il traffico e la visibilità delle singole pagine. Ad esempio, sappiamo quali pagine sono più popolari, quanti utenti vengono da noi o quali parti del sito web sono meno chiare per gli utenti.",
+          "cookie_table": [
+            {
+              "col1": "",
+              "col2": "",
+              "col3": "",
+              "col4": ""
+            }
+          ],
+          "toggle": {
+            "value": "analytics",
+            "enabled": false,
+            "readonly": false
+          }
+        },
+        {
+          "title": "Cookies di marketing",
+          "description": "Questi cookies raccolgono informazioni su come l'utente utilizza il sito web, su quali link ha cliccato o su quali pagine ha visitato. Queste informazioni ci permettono di valutare meglio quali annunci sono più adatti all'utente e quali non ha senso mostrare. Tutti questi dati sono anonimizzati e non possono identificare direttamente una persona specifica.",
+          "cookie_table": [
+            {
+              "col1": "",
+              "col2": "",
+              "col3": "",
+              "col4": ""
+            }
+          ],
+          "toggle": {
+            "value": "marketing",
+            "enabled": false,
+            "readonly": false
+          }
+        },
+        {
+          "title": "Altri cookies",
+          "description": "Questi cookies non fanno parte di nessuna delle altre categorie, vengono inseriti in questa sezione e descritti nella tabella sottostante.",
+          "cookie_table": [
+            {
+              "col1": "",
+              "col2": "",
+              "col3": "",
+              "col4": ""
+            }
+          ],
+          "toggle": {
+            "value": "other",
+            "enabled": false,
+            "readonly": false
+          }
+        }
+      ]
+    },
+    "iframe": {
+      "placeholder_button": "Devi accettare i cookies per vedere questo elemento."
+    }
+  },
+  "en": {
+    "consent_modal": {
+      "title": "We use cookies! <span class=\"font-weight-normal\">\ud83c\udf6a<\/span>",
+      "description": "Help us improve our website! By pressing the \"Accept All\" button, you agree to the storage of cookies for the purpose of improving our services and traffic analysis. You can modify your consent by clicking on the <button type=\"button\" data-cc=\"c-settings\" class=\"cc-link\">detailed settings<\/button>.",
+      "primary_btn": {
+        "text": "Accept all",
+        "role": "accept_all"
+      },
+      "secondary_btn": {
+        "text": "Reject all",
+        "role": "accept_necessary"
+      }
+    },
+    "settings_modal": {
+      "title": "Cookie preferences",
+      "save_settings_btn": "Save settings",
+      "accept_all_btn": "Accept all",
+      "reject_all_btn": "Reject all",
+      "close_btn_label": "Close",
+      "blocks": [
+        {
+          "title": "",
+          "description": "We use cookies to ensure the basic functionality of the website and to continuously improve it. You can consent to the use of cookies in bulk or for individual categories. Consent can be withdrawn at any time. Please read the <a href=\"\/en\/gdpr-general-regulation-of-the-personal-data-protection\/\" class=\"cc-link\">Privacy Policy<\/a>. Please <a class=\"cc-link\" href=\"\/en\/contact\/\">contact us<\/a> for any questions regarding cookies or data protection.     "
+        },
+        {
+          "title": "Strictly necessary cookies",
+          "description": "These cookies ensure the basic functionality of the website and cannot be rejected.",
+          "cookie_table": [
+            {
+              "col1": "",
+              "col2": "",
+              "col3": "",
+              "col4": ""
+            }
+          ],
+          "toggle": {
+            "value": "necessary",
+            "enabled": true,
+            "readonly": true
+          }
+        },
+        {
+          "title": "Performance and Analytics cookies",
+          "description": "Thanks to these cookies, we are able to track traffic and visibility of individual pages. For example, we know which pages are more popular, how many users come to us or which parts of the website are less clear to users.",
+          "cookie_table": [
+            {
+              "col1": "",
+              "col2": "",
+              "col3": "",
+              "col4": ""
+            }
+          ],
+          "toggle": {
+            "value": "analytics",
+            "enabled": false,
+            "readonly": false
+          }
+        },
+        {
+          "title": "Marketing cookies",
+          "description": "These cookies collect information about how the user uses the website, which links they have clicked on or which pages they have visited. This information allows us to better estimate which ads are more suitable for the user and which ones do not make sense to show. All this data is anonymised and cannot directly identify a specific person.",
+          "cookie_table": [
+            {
+              "col1": "",
+              "col2": "",
+              "col3": "",
+              "col4": ""
+            }
+          ],
+          "toggle": {
+            "value": "marketing",
+            "enabled": false,
+            "readonly": false
+          }
+        },
+        {
+          "title": "Other cookies",
+          "description": "These cookies are not part of any of the other categories, they are included in this section and described in the table below.",
+          "cookie_table": [
+            {
+              "col1": "",
+              "col2": "",
+              "col3": "",
+              "col4": ""
+            }
+          ],
+          "toggle": {
+            "value": "other",
+            "enabled": false,
+            "readonly": false
+          }
+        }
+      ]
+    },
+    "iframe": {
+      "placeholder_button": "You must allow cookies to see this"
+    }
+  },
+  "de": {
+    "consent_modal": {
+      "title": "Wir verwenden Cookies! <span class=\"font-weight-normal\">\ud83c\udf6a<\/span>",
+      "description": "Helfen Sie uns, unsere Website zu verbessern! Indem Sie auf die Schaltfl\u00e4che \"Alles akzeptieren\" klicken, erkl\u00e4ren Sie sich mit der Speicherung von Cookies zum Zweck der Verbesserung unserer Dienste und der Verkehrsanalyse einverstanden. Sie k\u00f6nnen Ihre Zustimmung \u00e4ndern, indem Sie auf die <button type=\"button\" data-cc=\"c-settings\" class=\"cc-link\">detaillierten Einstellungen<\/button> klicken.",
+      "primary_btn": {
+        "text": "Alles akzeptieren",
+        "role": "accept_all"
+      },
+      "secondary_btn": {
+        "text": "Alles ablehnen",
+        "role": "accept_necessary"
+      }
+    },
+    "settings_modal": {
+      "title": "Cookie-Einstellungen",
+      "save_settings_btn": "Einstellungen speichern",
+      "accept_all_btn": "Alles ablehnen",
+      "reject_all_btn": "Alles ablehnen",
+      "close_btn_label": "Schlie\u00dfen",
+      "blocks": [
+        {
+          "title": "",
+          "description": "Wir verwenden Cookies, um die grundlegende Funktionalit\u00e4t der Website zu gew\u00e4hrleisten und sie kontinuierlich zu verbessern. Sie k\u00f6nnen der Verwendung von Cookies im Ganzen oder nur f\u00fcr einzelne Kategorien zustimmen. Die Zustimmung kann jederzeit widerrufen werden. Bitte lesen Sie die <a href=\"\/de\/dsgvo-grundsatze-des-personaldatenschutzes\/\" class=\"cc-link\">Datenschutzbestimmungen<\/a>.  Bitte, <a class=\"cc-link\" href=\"\/de\/kontakt-2\/\">kontaktieren Sie uns<\/a> bei Fragen zu Cookies oder Datenschutz. "
+        },
+        {
+          "title": "Notwendige Cookies",
+          "description": "Diese Cookies gew\u00e4hrleisten die grundlegende Funktionalit\u00e4t der Website und k\u00f6nnen nicht abgelehnt werden.",
+          "cookie_table": [
+            {
+              "col1": "",
+              "col2": "",
+              "col3": "",
+              "col4": ""
+            }
+          ],
+          "toggle": {
+            "value": "necessary",
+            "enabled": true,
+            "readonly": true
+          }
+        },
+        {
+          "title": "Statistische und analytische Cookies",
+          "description": "Dank dieser Cookies sind wir in der Lage, den Verkehr und die Sichtbarkeit der einzelnen Seiten zu verfolgen. So wissen wir beispielsweise, welche Seiten besonders beliebt sind, wie viele Nutzer zu uns kommen oder welche Teile der Website f\u00fcr die Nutzer weniger \u00fcbersichtlich sind.",
+          "cookie_table": [
+            {
+              "col1": "",
+              "col2": "",
+              "col3": "",
+              "col4": ""
+            }
+          ],
+          "toggle": {
+            "value": "analytics",
+            "enabled": false,
+            "readonly": false
+          }
+        },
+        {
+          "title": "Marketing-Cookies",
+          "description": "Diese Cookies sammeln Informationen dar\u00fcber, wie der Nutzer die Website nutzt, auf welche Links er geklickt hat oder welche Seiten er besucht hat. Anhand dieser Informationen k\u00f6nnen wir besser einsch\u00e4tzen, welche Anzeigen f\u00fcr den Nutzer am besten geeignet sind und welche nicht sinnvoll sind. Alle diese Daten sind anonymisiert und lassen keine direkte Identifizierung einer bestimmten Person zu.",
+          "cookie_table": [
+            {
+              "col1": "",
+              "col2": "",
+              "col3": "",
+              "col4": ""
+            }
+          ],
+          "toggle": {
+            "value": "marketing",
+            "enabled": false,
+            "readonly": false
+          }
+        },
+        {
+          "title": "Other cookies",
+          "description": "Diese Cookies gehören zu keiner der anderen Kategorien, sie werden in diesem Abschnitt platziert und in der folgenden Tabelle beschrieben.",
+          "cookie_table": [
+            {
+              "col1": "",
+              "col2": "",
+              "col3": "",
+              "col4": ""
+            }
+          ],
+          "toggle": {
+            "value": "other",
+            "enabled": false,
+            "readonly": false
+          }
+        }
+      ]
+    },
+    "iframe": {
+      "placeholder_button": "Sie m\u00fcssen Cookies zulassen, um dies zu sehen"
+    }
+  }
+}

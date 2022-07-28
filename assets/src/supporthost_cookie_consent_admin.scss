@@ -1,0 +1,38 @@
+.field-collection {
+    width: 100%;
+}
+
+.field-collection td textarea {
+    width: 100%;
+}
+
+.field-collection td, .field-collection th {
+    padding: 2px 0;
+    width: auto;
+}
+
+.pie {
+    --w: 100px;
+    width: var(--w);
+    aspect-ratio: 1;
+    position: relative;
+    display: inline-grid;
+    place-content: center;
+    margin: 5px;
+    font-size: 25px;
+    font-weight: bold;
+    font-family: sans-serif;
+}
+
+.pie:before {
+    --b: 10px;
+    --perc: calc(var(--p) * 1%);
+    --gradientFrom: calc(99% - var(--b));
+    --gradientTo: calc(100% - var(--b));
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    inset: 0;
+    background: conic-gradient(#666666 var(--perc), transparent 0);
+    mask: radial-gradient(farthest-side, transparent var(--gradientFrom), #000 var(--gradientTo));
+}

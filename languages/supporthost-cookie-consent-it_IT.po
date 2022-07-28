@@ -1,0 +1,417 @@
+# Copyright (C) 2022 SupportHost OU
+# This file is distributed under the GPLv2.
+msgid ""
+msgstr ""
+"Project-Id-Version: SupportHost cookie consent 1.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/supporthost-"
+"cookie-consent\n"
+"POT-Creation-Date: 2022-07-28T02:59:50+00:00\n"
+"PO-Revision-Date: 2022-07-27 22:01-0500\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: it_IT\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.1.1\n"
+"X-Domain: supporthost-cookie-consent\n"
+
+#. Plugin Name of the plugin
+msgid "SupportHost cookie consent"
+msgstr "SupportHost cookie consent"
+
+#. Description of the plugin
+msgid ""
+"Plugin implements orestbida/cookieconsent cookie consent solution and stores "
+"consents in custom database table masquerading the ips."
+msgstr ""
+"Questo plugin implementa la soluzione cookie consente orestbida/"
+"cookieconsent e registra i consensi degli utenti in una tabella custom del "
+"database, anonimizzando gli indirizzi IP."
+
+#. Author of the plugin
+msgid "SupportHost OU"
+msgstr "SupportHost OU"
+
+#. Author URI of the plugin
+msgid "https://supporthost.com/"
+msgstr "https://supporthost.com/"
+
+#: src/CookieConsent.php:171
+msgid "Plugin requires at least PHP version %s."
+msgstr "Il plugin richiede la versione PHP %s o superiore."
+
+#: src/CookieConsent.php:250
+msgid "Failed to import initial settings data."
+msgstr "Importazione iniziale dei dati fallita."
+
+#: src/CookieConsentSettings.php:48
+msgid "Cookie consent"
+msgstr "Cookie consent"
+
+#: src/CookieConsentSettings.php:48
+msgid "SupportHost Cookie consent"
+msgstr "SupportHost cookie consent"
+
+#: src/CookieConsentSettings.php:52
+msgid "Texts"
+msgstr "Testi"
+
+#: src/CookieConsentSettings.php:55 src/CookieConsentSettings.php:198
+msgid "Appearance"
+msgstr "Aspetto"
+
+#: src/CookieConsentSettings.php:58
+msgid "Settings"
+msgstr "Impostazioni"
+
+#: src/CookieConsentSettings.php:61
+msgid "Consent report"
+msgstr "Registro dei consensi"
+
+#: src/CookieConsentSettings.php:64
+msgid "Statistics"
+msgstr "Statistiche"
+
+#: src/CookieConsentSettings.php:67
+msgid "Import/export"
+msgstr "Importa/esporta"
+
+#: src/CookieConsentSettings.php:141
+msgid "Add row"
+msgstr "Aggiungi riga"
+
+#: src/CookieConsentSettings.php:144 src/CookieConsentSettings.php:903
+msgid "Name"
+msgstr "Nome"
+
+#: src/CookieConsentSettings.php:145 src/CookieConsentSettings.php:904
+msgid "Domain"
+msgstr "Dominio"
+
+#: src/CookieConsentSettings.php:146 src/CookieConsentSettings.php:905
+msgid "Expiration"
+msgstr "Scadenza"
+
+#: src/CookieConsentSettings.php:147 src/CookieConsentSettings.php:366
+#: src/CookieConsentSettings.php:381 src/CookieConsentSettings.php:385
+#: src/CookieConsentSettings.php:390 src/CookieConsentSettings.php:395
+#: src/CookieConsentSettings.php:400 src/CookieConsentSettings.php:906
+msgid "Description"
+msgstr "Descrizione"
+
+#: src/CookieConsentSettings.php:148
+msgid "Is regex?"
+msgstr "È una regex?"
+
+#: src/CookieConsentSettings.php:172
+msgid "Yes"
+msgstr "Si"
+
+#: src/CookieConsentSettings.php:176
+msgid "Remove row"
+msgstr "Elimina riga"
+
+#: src/CookieConsentSettings.php:204
+msgid "Theme selection"
+msgstr "Scelta del tema"
+
+#: src/CookieConsentSettings.php:214
+msgid "Select the theme for the cookie bar and cookie setting modal."
+msgstr ""
+"Seleziona il tema che vuoi usare per la barra dei cookie e per la finestra "
+"modale."
+
+#: src/CookieConsentSettings.php:219
+msgid "Layout style"
+msgstr "Impostazione stile"
+
+#: src/CookieConsentSettings.php:227
+msgid "Select the layout for the cookie bar."
+msgstr "Scegli lo stile che preferisci per la barra dei cookie."
+
+#: src/CookieConsentSettings.php:232
+msgid "Position"
+msgstr "Posizione"
+
+#: src/CookieConsentSettings.php:246
+msgid "Select the position for the cookie bar."
+msgstr "Scegli la posizione per la barra dei cookie."
+
+#: src/CookieConsentSettings.php:251 src/CookieConsentSettings.php:263
+#: src/CookieConsentSettings.php:275
+msgid "Transition style"
+msgstr "Stile transizione"
+
+#: src/CookieConsentSettings.php:258
+msgid "Select the transition style for the cookie bar."
+msgstr "Scegli il tipo di transizione per la barra dei cookie."
+
+#: src/CookieConsentSettings.php:270
+msgid "Select the layout for the setting's dialog."
+msgstr "Scegli lo style per la finestra modale delle impostazioni."
+
+#: src/CookieConsentSettings.php:282
+msgid "Select the transition style for the setting's dialog"
+msgstr ""
+"Scegli il tipo di transizione per la finestra modale delle impostazioni."
+
+#: src/CookieConsentSettings.php:287
+msgid "Force consent"
+msgstr "Forza il consenso"
+
+#: src/CookieConsentSettings.php:291
+msgid ""
+"If checked the user won't be able to interact with your website until he "
+"accepts or rejects cookies."
+msgstr ""
+"Se selezionato l’utente non potrà navigare il sito prima di aver accettato o "
+"rifiutato i cookies."
+
+#: src/CookieConsentSettings.php:295 src/CookieConsentSettings.php:408
+#: src/CookieConsentSettings.php:483
+msgid "Save"
+msgstr "Salva"
+
+#: src/CookieConsentSettings.php:345
+msgid "Status"
+msgstr "Stato"
+
+#: src/CookieConsentSettings.php:350
+msgid "Disabled"
+msgstr "Disabilitato"
+
+#: src/CookieConsentSettings.php:353
+msgid "Enabled"
+msgstr "Abilitato"
+
+#: src/CookieConsentSettings.php:356
+msgid "Show only for admins"
+msgstr "Mostra solo per gli amministratori"
+
+#: src/CookieConsentSettings.php:363
+msgid "Consent modal"
+msgstr "Finestra modale"
+
+#: src/CookieConsentSettings.php:365 src/CookieConsentSettings.php:373
+#: src/CookieConsentSettings.php:380 src/CookieConsentSettings.php:384
+#: src/CookieConsentSettings.php:389 src/CookieConsentSettings.php:394
+#: src/CookieConsentSettings.php:399
+msgid "Header"
+msgstr "Header"
+
+#: src/CookieConsentSettings.php:367 src/CookieConsentSettings.php:375
+msgid "Accept all button"
+msgstr "Bottone accetta tutti"
+
+#: src/CookieConsentSettings.php:368 src/CookieConsentSettings.php:376
+msgid "Reject all button"
+msgstr "Bottone rifiuta tutti"
+
+#: src/CookieConsentSettings.php:371
+msgid "Settings modal"
+msgstr "Impostazioni finestra modale"
+
+#: src/CookieConsentSettings.php:374
+msgid "Save settings button"
+msgstr "Bottone salva impostazioni"
+
+#: src/CookieConsentSettings.php:377
+msgid "Close button"
+msgstr "Bottone chiusura"
+
+#: src/CookieConsentSettings.php:379
+msgid "Info block"
+msgstr "Blocco informazioni"
+
+#: src/CookieConsentSettings.php:383
+msgid "Necessary cookies"
+msgstr "Cookie necessari"
+
+#: src/CookieConsentSettings.php:386 src/CookieConsentSettings.php:391
+#: src/CookieConsentSettings.php:396 src/CookieConsentSettings.php:401
+msgid "Cookie table"
+msgstr "Tabella dei cookie"
+
+#: src/CookieConsentSettings.php:388
+msgid "Analytics cookies"
+msgstr "Cookies analitici"
+
+#: src/CookieConsentSettings.php:393
+msgid "Marketing cookies"
+msgstr "Cookies di marketing"
+
+#: src/CookieConsentSettings.php:398
+msgid "Other cookies"
+msgstr "Altri Cookies"
+
+#: src/CookieConsentSettings.php:404
+msgid "Iframe placeholder"
+msgstr "Segnaposto iframe"
+
+#: src/CookieConsentSettings.php:406
+msgid "Placeholder"
+msgstr "Segnaposto"
+
+#: src/CookieConsentSettings.php:423
+msgid "Options"
+msgstr "Opzioni"
+
+#: src/CookieConsentSettings.php:429
+msgid "Cookie expiration"
+msgstr "Scadenza cookie"
+
+#: src/CookieConsentSettings.php:435
+msgid "Insert the number of days you want the selection cookie to be valid."
+msgstr ""
+"Inserisci il numero di giorni per cui vuoi che il cookie di selezione sia "
+"valido"
+
+#: src/CookieConsentSettings.php:442
+msgid "Scripts"
+msgstr "Scripts"
+
+#: src/CookieConsentSettings.php:448
+msgid "Google Tag Manager ID"
+msgstr "Google Tag Manager ID"
+
+#: src/CookieConsentSettings.php:454
+msgid ""
+"Google Tag Manager will be added automatically with default "
+"analytics_storage=denied & ad_storage=denied "
+msgstr ""
+"Google Tag Manager sarà aggiunto in automatico, con i seguenti valori di "
+"default: analytics_storage=denied e ad_storage=denied "
+
+#: src/CookieConsentSettings.php:460
+msgid "Head scripts"
+msgstr "Scripts in head"
+
+#: src/CookieConsentSettings.php:466
+msgid ""
+"Add here the javascript code you want to add in the head of your website. "
+"Take a look at the guidelines below to block the javascript until the user "
+"accepts the cookies."
+msgstr ""
+"Inserisci qui il javascript che vuoi inserire nell’head del tuo sito web. "
+"Controlla le linee guida qui sotto per bloccare il javascript prima che "
+"l’utente accetti i cookies."
+
+#: src/CookieConsentSettings.php:472
+msgid "Footer scripts"
+msgstr "Scripts nel footer"
+
+#: src/CookieConsentSettings.php:478
+msgid ""
+"Add here the javascript code you want to add in the footer of your website. "
+"Take a look at the guidelines below to block the javascript until the user "
+"accepts the cookies."
+msgstr ""
+"Inserisci qui il javascript che vuoi inserire nel footer del tuo sito web. "
+"Controlla le linee guida qui sotto per bloccare il javascript prima che "
+"l’utente accetti i cookies."
+
+#: src/CookieConsentSettings.php:486
+msgid ""
+"NOTE: You need to add a type and a category to your &lt;script&gt; tags as "
+"shown below. Once the user accepts the cookies for a category the script "
+"will be automatically activated and run."
+msgstr ""
+"NOTA: Devi aggiungere un tipe e una categoria al tag &lt;script&gt; come "
+"mostrato qui sotto. In questo modo una volta che l’utente accetta i cookies "
+"gli script saranno attivati e lanciati automaticamente."
+
+#: src/CookieConsentSettings.php:544
+msgid "Select bulk action"
+msgstr "Seleziona azioni di gruppo"
+
+#: src/CookieConsentSettings.php:546
+msgid "Bulk actions"
+msgstr "Azioni di gruppo"
+
+#: src/CookieConsentSettings.php:547
+msgid "Delete"
+msgstr "Elimina"
+
+#: src/CookieConsentSettings.php:549
+msgid "Apply"
+msgstr "Applica"
+
+#: src/CookieConsentSettings.php:552
+msgid "Total consents:"
+msgstr "Totale dei consensi:"
+
+#: src/CookieConsentSettings.php:561 src/CookieConsentSettings.php:601
+msgid "Select all"
+msgstr "Seleziona tutti"
+
+#: src/CookieConsentSettings.php:564 src/CookieConsentSettings.php:604
+msgid "IP Address"
+msgstr "Indirizzo IP"
+
+#: src/CookieConsentSettings.php:565 src/CookieConsentSettings.php:605
+msgid "Visited date"
+msgstr "Data della visita"
+
+#: src/CookieConsentSettings.php:566 src/CookieConsentSettings.php:606
+msgid "cookie details"
+msgstr "Dettagli del cookie"
+
+#: src/CookieConsentSettings.php:567 src/CookieConsentSettings.php:607
+msgid "User ID"
+msgstr "ID utente"
+
+#: src/CookieConsentSettings.php:632
+msgid "No data"
+msgstr "Nessun dato"
+
+#: src/CookieConsentSettings.php:637
+msgid "Necessary"
+msgstr "Necessari"
+
+#: src/CookieConsentSettings.php:639
+msgid "Analytics"
+msgstr "Ananlitici"
+
+#: src/CookieConsentSettings.php:641
+msgid "Marketing"
+msgstr "Marketing"
+
+#: src/CookieConsentSettings.php:643
+msgid "Other"
+msgstr "Altri"
+
+#: src/CookieConsentSettings.php:666
+msgid "Import settings"
+msgstr "Importa impostazioni"
+
+#: src/CookieConsentSettings.php:669
+msgid "Import"
+msgstr "Importa"
+
+#: src/CookieConsentSettings.php:673
+msgid "Export settings"
+msgstr "Esporta impostazioni"
+
+#: src/CookieConsentSettings.php:676
+msgid "Export"
+msgstr "Esporta"
+
+#: src/CookieConsentSettings.php:695
+msgid "Settings imported successfully."
+msgstr "Importazioni importate con successo."
+
+#: src/CookieConsentSettings.php:697
+msgid "Settings import failed or imported data is the same."
+msgstr ""
+"Errore durante l’importazione delle impostazioni, o le impostazioni non sono "
+"cambiate."
+
+#: src/CookieConsentSettings.php:700
+msgid "Uploaded file is not a valid JSON file."
+msgstr "Il fila caricato non è un file JSON valido."
+
+#: src/CookieConsentSettings.php:872
+msgid "records have been deleted."
+msgstr "Elementi sono stati eliminati."
