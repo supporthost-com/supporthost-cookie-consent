@@ -91,14 +91,16 @@ class CookieConsent
 
         unset($cookieData['level'], $cookieData['cookie_expires_in_days']);
 
-        global $wpdb;
-        $wpdb->insert(self::getTableName(), [
-            'level' => json_encode($level),
-            'timestamp' => (new DateTime('now'))->format('Y-m-d_H:i:s'),
-            'cookie_expires_in_days' => $cookieExpiresInDays,
-            'data' => serialize($cookieData),
-        ], ['%s', '%s', '%d', '%s']);
-
+        if ( get_option('supporthost-cookie-consent-report') != 'on' ) {
+            global $wpdb;
+            $wpdb->insert(self::getTableName(), [
+                'level' => json_encode($level),
+                'timestamp' => (new DateTime('now'))->format('Y-m-d_H:i:s'),
+                'cookie_expires_in_days' => $cookieExpiresInDays,
+                'data' => serialize($cookieData),
+            ], ['%s', '%s', '%d', '%s']);
+        }
+        
         wp_send_json([
             'msg' => 'ok',
         ], 200);

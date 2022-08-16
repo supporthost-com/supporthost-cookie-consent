@@ -1,2 +1,41 @@
 [data-iframe-cookie-needed]{display:flex;border:1px solid #ddd}.iframe-placeholder{display:flex;flex-grow:1;background-size:cover}.iframe-placeholder__overlay{display:flex;flex-grow:1;align-items:end;background:#fff;background:linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 20%, #fff 70%, #fff 100%)}.iframe-placeholder__btn{margin:0 auto 30px auto}
 /*# sourceMappingURL=supporthost_cookie_consent.min.css.map */
+
+
+.supporthost-cookie-manage-consent {
+    position: fixed;
+    height: 20px;
+    right: 50px;
+    bottom: 0;
+    display: block;
+    overflow: hidden;
+    color: var(--cc-btn-secondary-bg);
+    background: var(--cc-btn-secondary-bg);
+    border: none;
+    border-radius: 0.7em;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    transition: height 0.5s;
+    padding: 1em 2em;
+    cursor: pointer;
+    font-size: .82em;
+    font-weight: 700;
+}
+
+.supporthost-cookie-manage-consent.left {
+    left: 50px;
+    right: unset;
+}
+
+.supporthost-cookie-manage-consent.hidden {
+    display: none;
+}
+
+.supporthost-cookie-manage-consent:hover {
+    height: 60px;
+    color: var(--cc-btn-secondary-text);
+}
+
+.theme_supporthost .supporthost-cookie-manage-consent:hover {
+    color: #ffffff;
+}

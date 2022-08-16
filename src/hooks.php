@@ -26,6 +26,26 @@ function supporthost_cookie_consent_add_class( $output, $doctype ) {
     return $output;
 }
 
+/**
+ * Adds manage settings in the footer
+ */
+add_action('wp_footer', 'supporthost_cookie_consent_add_manage_settings');
+function supporthost_cookie_consent_add_manage_settings() {
+    
+    $appearance = get_option('supporthost-cookie-consent-appearance');
+
+    if ( $appearance['hide_manage_consent'] == 'on' )
+        return;
+
+    $side = ( in_array( $appearance['position'], ['top left', 'middle left', 'bottom left']) ) ? 'left' : '' ;
+
+    if( !isset( $_COOKIE['cc_cookie'] ) )
+        $hidden = 'hidden';
+
+    echo '<button type="button" data-cc="c-settings" id="c-settings" class="c-bn c_link supporthost-cookie-manage-consent ' . $hidden . $side . '">' . __('Cookie settings', 'supporthost-cookie-consent') . '</button>';
+
+}
+
 
 /**
  * Adds scripts to the head of your website if in settings

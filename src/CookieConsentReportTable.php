@@ -39,12 +39,12 @@ if ( !class_exists( 'CookieConsentReportTable' ) ) {
 
             if (!empty($search)) {
                   return $wpdb->get_results(
-                        "SELECT * from {$tablename} WHERE id Like '%{$search}%' OR level Like '%{$search}%' OR data Like '%{$search}%'",
+                        "SELECT * from {$tablename} WHERE id Like '%{$search}%' OR level Like '%{$search}%' OR data Like '%{$search}%' order by timestamp desc",
                         ARRAY_A
                   );
             }else{
                   return $wpdb->get_results(
-                        "SELECT * from {$tablename}",
+                        "SELECT * from {$tablename} order by timestamp desc",
                         ARRAY_A
                   );
             }

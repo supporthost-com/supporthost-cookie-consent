@@ -153,6 +153,8 @@ window.addEventListener('load', function () {
     cookieConsentOptions['onFirstAction'] = function (userPreferences, cookie) {
         saveConsent(cookie, false);
         setGTM(cookie.level);
+        var settings = document.getElementById('c-settings');
+        settings.classList.remove('hidden');
     };
 
     cookieConsentOptions['onChange'] = function (cookie, changedPreferences) {

@@ -58,6 +58,7 @@ class CookieConsentSettings
                     <a href="<?php echo admin_url('options-general.php?page=supporthost-cookie-consent-settings'); ?>&amp;tab=settings"
                        class="nav-tab <?php if ($tab === 'settings'): ?>nav-tab-active<?php endif; ?>"><?php _e('Settings', 'supporthost-cookie-consent'); ?>
                     </a>
+                    <?php echo get_option('supporthost-cookie-consent-report') ?>
                     <a href="<?php echo admin_url('options-general.php?page=supporthost-cookie-consent-settings'); ?>&amp;tab=consent_report"
                        class="nav-tab <?php if ($tab === 'consent_report'): ?>nav-tab-active<?php endif; ?>"><?php _e('Consent report', 'supporthost-cookie-consent'); ?>
                     </a>
@@ -130,7 +131,11 @@ class CookieConsentSettings
             ?>
             <tr>
                 <th scope="row">
-                    <label for="<?php echo esc_attr($id) ?>"><?php echo esc_html($label) ?> - <?php echo esc_html($language) ?></label>
+                    <label for="<?php echo esc_attr($id) ?>"><?php echo esc_html($label) ?>
+                        <?php if ( count( $this->availableLanguages ) > 1 ) { ?> 
+                            - <?php echo esc_html($language) ?>
+                        <?php } ?>
+                    </label>
                 </th>
                 <td>
                     <?php if ('text' === $type): ?>
@@ -411,6 +416,15 @@ class CookieConsentSettings
                         <p><?php _e('If checked the user won\'t be able to interact with your website until he accepts or rejects cookies.', 'supporthost-cookie-consent') ?></p>
                     </td>
                 </tr>
+                <tr>
+                    <th scope="row">
+                        <label for="hide_manage_consent"><?php _e('Hide manage consent', 'supporthost-cookie-consent') ?></label>
+                    </th>
+                    <td>
+                        <input type="checkbox" name="hide_manage_consent" <?php checked( 'on', $appearance['hide_manage_consent'] ) ?>>
+                        <p><?php _e('If checked, the button on the footer to manage consent will be hidden. You can use the [sh-cookie-settings] shortcode anywhere to show a button/link to manage the consent.', 'supporthost-cookie-consent') ?></p>
+                    </td>
+                </tr>
             </table>
             <input type="submit" name="save-settings" class="button button-primary" value="<?php _e('Save', 'supporthost-cookie-consent') ?>">
         </form>
@@ -442,6 +456,18 @@ class CookieConsentSettings
                         <br>
                         <small>
                             <?php _e('Insert the number of days you want the selection cookie to be valid.', 'supporthost-cookie-consent') ?>
+                        </small>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">
+                        <label for="cookie_consent_report"><?php _e('Disable consent report', 'supporthost-cookie-consent') ?></label>
+                    </th>
+                    <td>
+                        <input type="checkbox" name="cookie_consent_report" id="cookie_consent_report" <?php if ( get_option('supporthost-cookie-consent-report') == 'on' ) echo 'checked'; ?>>
+                        <br>
+                        <small>
+                            <?php _e('tick this box if you want to disable the consent report logging. You will still see the old data, it will stop logging new consents.', 'supporthost-cookie-consent') ?>
                         </small>
                     </td>
                 </tr>
@@ -653,6 +679,7 @@ class CookieConsentSettings
 
             // reset checkboxes
             $options['force_consent'] = '';
+            $options['hide_manage_consent'] = '';
 
             foreach ( $_POST as $key => $value) {
                 if ( $key == 'save-settings' )
@@ -753,6 +780,7 @@ class CookieConsentSettings
     {
         if (isset($_POST['save-settings'])) {
             update_option('supporthost-cookie-consent-cookie-expiration', sanitize_text_field($_POST['cookie_expiration']));
+            update_option('supporthost-cookie-consent-report', sanitize_text_field($_POST['cookie_consent_report']));
             update_option('supporthost-cookie-consent-gtm-id', sanitize_text_field($_POST['gtm_id']));
             update_option('supporthost-cookie-consent-head-scripts', base64_encode($_POST['head_scripts']));
             update_option('supporthost-cookie-consent-footer-scripts', base64_encode($_POST['footer_scripts']));
