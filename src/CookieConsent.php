@@ -9,8 +9,8 @@ use JsonException;
  * Class CookieConsent
  *
  * @package SupportHostCookieConsent
- * @author  kamil.pesek
- * Date: 25. 1. 2022
+ * @author  Ivan.Messina
+ * Date: 27. 7. 2022
  */
 class CookieConsent
 {
@@ -230,6 +230,7 @@ class CookieConsent
             // Add default settings
             $data = array(
                 'theme' => '',
+                'force_consent' => '',
                 // consent modal
                 'layout' => 'cloud',               // box/cloud/bar
                 'position' => 'bottom center',     // bottom/middle/top + left/right/center

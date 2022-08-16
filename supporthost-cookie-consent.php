@@ -29,13 +29,11 @@ if (!defined('ABSPATH')) {
  * Includes necessary files
  */
 
-if ( file_exists( __DIR__ . '/src/ShortCodes.php' ) ) {
+if ( file_exists( __DIR__ . '/src/ShortCodes.php' ) )
 	require __DIR__ . '/src/ShortCodes.php';
-}
 
-if ( file_exists( __DIR__ . '/src/hooks.php' ) ) {
+if ( file_exists( __DIR__ . '/src/hooks.php' ) )
 	require __DIR__ . '/src/hooks.php';
-}
 
 /**
  * Define constants
@@ -49,7 +47,7 @@ define('SUPPORTHOST_COOKIE_CONSENT_BASENAME', basename(__DIR__));
  * Autoload classes
  */
 spl_autoload_register(static function ($class) {
-    if (0 === strpos($class, 'SupportHostCookieConsent')) {
+    if ( 0 === strpos($class, 'SupportHostCookieConsent') && $class != 'SupportHostCookieConsent\WP_List_Table' ) {
         require(__DIR__ . '/src/' . str_replace('SupportHostCookieConsent', '', str_replace('\\', '/', $class)) . '.php');
     }
 });

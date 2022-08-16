@@ -182,3 +182,36 @@ function allowIframe(cookieCategory) {
         div.remove();
     });
 }
+
+function get_cookies_array() {
+
+    var cookies = [];
+
+    if (document.cookie && document.cookie != '') {
+        var split = document.cookie.split(';');
+
+        for (var i = 0; i < split.length; i++) {
+            var name_value = split[i].split("=");
+            name_value[0] = name_value[0].replace(/^ /, '');
+            cookies.push( name_value[0] );
+            // cookies[i] = decodeURIComponent(name_value[0]);
+        }
+    }
+
+    return cookies;
+   
+}
+
+document.addEventListener('click', function (event) {
+
+	// If the clicked element doesn't have the right selector, bail
+	if (!event.target.matches('.cc-delete')) return;
+
+	// Don't follow the link
+	event.preventDefault();
+
+	// delete all cookies
+    orestbidaCookieConsent.eraseCookies( get_cookies_array() );
+    window.location.reload();
+
+}, false);

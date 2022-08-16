@@ -3,7 +3,7 @@
   "it": {
     "consent_modal": {
       "title": "Usiamo i cookies! <span class=\"font-weight-normal\">\ud83c\udf6a<\/span>",
-      "description": "Aiutaci a migliorare il nostro sito web! Premendo il pulsante \"Accetta tutti\", si acconsente ad accettare i cookie per migliorare i nostri servizi e l'analisi del traffico. È possibile modificare il proprio consenso cliccando sul <pulsante type=\"button\" data-cc=\"c-settings\" class=\"cc-link\">impostazioni cookie</button>.",
+      "description": "Aiutaci a migliorare il nostro sito web! Premendo il pulsante \"Accetta tutti\", si acconsente ad accettare i cookie per migliorare i nostri servizi e l'analisi del traffico. È possibile modificare il proprio consenso cliccando su <button type=\"button\" data-cc=\"c-settings\" class=\"cc-link\">impostazioni cookie</button>.",
       "primary_btn": {
         "text": "Accetta tutti",
         "role": "accept_all"

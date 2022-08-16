@@ -4,12 +4,13 @@ namespace SupportHostCookieConsent;
 
 use JsonException;
 
+
 /**
  * Class CookieConsentSettings
  *
  * @package SupportHostCookieConsent
- * @author  kamil.pesek
- * Date: 25. 1. 2022
+ * @author  Ivan.Messina
+ * Date: 27. 7. 2022
  */
 class CookieConsentSettings
 {
@@ -60,8 +61,8 @@ class CookieConsentSettings
                     <a href="<?php echo admin_url('options-general.php?page=supporthost-cookie-consent-settings'); ?>&amp;tab=consent_report"
                        class="nav-tab <?php if ($tab === 'consent_report'): ?>nav-tab-active<?php endif; ?>"><?php _e('Consent report', 'supporthost-cookie-consent'); ?>
                     </a>
-                    <a href="<?php echo admin_url('options-general.php?page=supporthost-cookie-consent-settings'); ?>&amp;tab=statistics"
-                       class="nav-tab <?php if ($tab === 'statistics'): ?>nav-tab-active<?php endif; ?>"><?php _e('Statistics', 'supporthost-cookie-consent'); ?>
+                    <a href="<?php echo admin_url('options-general.php?page=supporthost-cookie-consent-settings'); ?>&amp;tab=cookie_scan"
+                       class="nav-tab <?php if ($tab === 'cookie_scan'): ?>nav-tab-active<?php endif; ?>"><?php _e('Cookie scan', 'supporthost-cookie-consent'); ?>
                     </a>
                     <a href="<?php echo admin_url('options-general.php?page=supporthost-cookie-consent-settings'); ?>&amp;tab=import_export"
                        class="nav-tab <?php if ($tab === 'import_export'): ?>nav-tab-active<?php endif; ?>"><?php _e('Import/export', 'supporthost-cookie-consent'); ?>
@@ -85,8 +86,8 @@ class CookieConsentSettings
                         $this->tabConsentReport();
                     }
 
-                    if ('statistics' === $tab) {
-                        $this->tabStatistics();
+                    if ('cookie_scan' === $tab) {
+                        $this->tabCookieScan();
                     }
 
                     if ('import_export' === $tab) {
@@ -138,7 +139,7 @@ class CookieConsentSettings
                         <textarea rows="5" style="max-width: 700px;width: 100%;" name="<?php echo esc_attr($fieldName) ?>" id="<?php echo esc_attr($id) ?>"><?php echo esc_html($fieldValue) ?></textarea>
                     <?php else: ?>
                         <?php $fieldValue = $fieldValue ?: [['col1' => '', 'col2' => '', 'col3' => '', 'col4' => '']]; ?>
-                        <button type="button" onclick="addCookieTableRow(this)" style="margin-bottom: 10px;"><?php _e('Add row', 'supporthost-cookie-consent') ?></button>
+                        <button type="button" onclick="addCookieTableRow(this)" style="margin-bottom: 10px;" class="button button-secondary"><?php _e('Add row', 'supporthost-cookie-consent') ?></button>
                         <table class="field-collection">
                             <tr>
                                 <th><?php _e('Name', 'supporthost-cookie-consent'); ?></th>
@@ -150,6 +151,8 @@ class CookieConsentSettings
                             </tr>
                             <?php foreach ($fieldValue as $rowIdx => $rowValues):
                                 $rowValues = array_map('htmlspecialchars', $rowValues);
+                                if ( !isset( $rowValues['is_regex'] ) )
+                                    $rowValues['is_regex'] = '';
                                 ?>
                                 <tr>
                                     <td>
@@ -173,7 +176,7 @@ class CookieConsentSettings
                                         </select>
                                     </td>
                                     <td>
-                                        <button type="button" onclick="removeCookieTableRow(this)"><?php _e('Remove row', 'supporthost-cookie-consent') ?></button>
+                                        <button type="button" onclick="removeCookieTableRow(this)" class="button button-secondary"><?php _e('Remove row', 'supporthost-cookie-consent') ?></button>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
@@ -188,120 +191,10 @@ class CookieConsentSettings
     /**
      * @return void
      */
-    private function tabAppearance(): void
-    {
-        $this->handleAppearanceForm();
-        $appearance = get_option('supporthost-cookie-consent-appearance');
-        ?>
-        <form action="" method="POST">
-            <h2>
-                <label for="app-scripts"><?php _e('Appearance', 'supporthost-cookie-consent'); ?></label>
-            </h2>
-
-            <table class="form-table">
-                <tr>
-                    <th scope="row">
-                        <label for="theme"><?php _e('Theme selection', 'supporthost-cookie-consent') ?></label>
-                    </th>
-                    <td>
-                        <select name="theme" id="theme">
-                            <option value="" <?php selected( '', $appearance['theme'] ) ?>>Default</option>
-                            <option value="c_darkmode" <?php selected( 'c_darkmode', $appearance['theme'] ) ?>>Dark</option>
-                            <option value="theme_funky" <?php selected( 'theme_funky', $appearance['theme'] ) ?>>Funky</option>
-                            <option value="theme_turquoise" <?php selected( 'theme_turquoise', $appearance['theme'] ) ?>>Turquoise</option>
-                            <option value="theme_supporthost" <?php selected( 'theme_supporthost', $appearance['theme'] ) ?>>SupportHost</option>
-                        </select>
-                        <p><?php _e('Select the theme for the cookie bar and cookie setting modal.', 'supporthost-cookie-consent') ?></p>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">
-                        <label for="layout"><?php _e('Layout style', 'supporthost-cookie-consent') ?></label>
-                    </th>
-                    <td>
-                        <select name="layout" id="layout">
-                            <option value="cloud" <?php selected( 'cloud', $appearance['layout'] ) ?>>Cloud</option>
-                            <option value="box" <?php selected( 'box', $appearance['layout'] ) ?>>Box</option>
-                            <option value="bar" <?php selected( 'bar', $appearance['layout'] ) ?>>Bar</option>
-                        </select>
-                        <p><?php _e('Select the layout for the cookie bar.', 'supporthost-cookie-consent') ?></p>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">
-                        <label for="position"><?php _e('Position', 'supporthost-cookie-consent') ?></label>
-                    </th>
-                    <td>
-                        <select name="position" id="position">
-                            <option value="bottom left" <?php selected( 'bottom left', $appearance['position'] ) ?>>Bottom Left</option>
-                            <option value="bottom center" <?php selected( 'bottom center', $appearance['position'] ) ?>>Bottom Center</option>
-                            <option value="bottom right" <?php selected( 'bottom right', $appearance['position'] ) ?>>Bottom Right</option>
-                            <option value="middle left" <?php selected( 'middle left', $appearance['position'] ) ?>>Middle Left</option>
-                            <option value="middle center" <?php selected( 'middle center', $appearance['position'] ) ?>>Middle Center</option>
-                            <option value="middle right" <?php selected( 'middle right', $appearance['position'] ) ?>>Middle Right</option>
-                            <option value="top left" <?php selected( 'top left', $appearance['position'] ) ?>>Top Left</option>
-                            <option value="top center" <?php selected( 'top center', $appearance['position'] ) ?>>Top Center</option>
-                            <option value="top right" <?php selected( 'top right', $appearance['position'] ) ?>>Top Right</option>
-                        </select>
-                        <p><?php _e('Select the position for the cookie bar.', 'supporthost-cookie-consent') ?></p>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">
-                        <label for="transition"><?php _e('Transition style', 'supporthost-cookie-consent') ?></label>
-                    </th>
-                    <td>
-                        <select name="transition" id="transition">
-                            <option value="zoom" <?php selected( 'zoom', $appearance['transition'] ) ?>>Zoom</option>
-                            <option value="slide" <?php selected( 'slide', $appearance['transition'] ) ?>>Slide</option>
-                        </select>
-                        <p><?php _e('Select the transition style for the cookie bar.', 'supporthost-cookie-consent') ?></p>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">
-                        <label for="settings_layout"><?php _e('Transition style', 'supporthost-cookie-consent') ?></label>
-                    </th>
-                    <td>
-                        <select name="settings_layout" id="settings_layout">
-                            <option value="box" <?php selected( 'box', $appearance['settings_layout'] ) ?>>Box</option>
-                            <option value="bar" <?php selected( 'bar', $appearance['settings_layout'] ) ?>>Bar</option>
-                        </select>
-                        <p><?php _e('Select the layout for the setting\'s dialog.', 'supporthost-cookie-consent') ?></p>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">
-                        <label for="settings_transition"><?php _e('Transition style', 'supporthost-cookie-consent') ?></label>
-                    </th>
-                    <td>
-                        <select name="settings_transition" id="settings_transition">
-                            <option value="zoom" <?php selected( 'zoom', $appearance['settings_transition'] ) ?>>Zoom</option>
-                            <option value="slide" <?php selected( 'slide', $appearance['settings_transition'] ) ?>>Slide</option>
-                        </select>
-                        <p><?php _e('Select the transition style for the setting\'s dialog', 'supporthost-cookie-consent') ?></p>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">
-                        <label for="force_consent"><?php _e('Force consent', 'supporthost-cookie-consent') ?></label>
-                    </th>
-                    <td>
-                        <input type="checkbox" name="force_consent" <?php checked( 'on', $appearance['force_consent'] ) ?>>
-                        <p><?php _e('If checked the user won\'t be able to interact with your website until he accepts or rejects cookies.', 'supporthost-cookie-consent') ?></p>
-                    </td>
-                </tr>
-            </table>
-            <input type="submit" name="save-settings" class="button button-primary" value="<?php _e('Save', 'supporthost-cookie-consent') ?>">
-        </form>
-        <?php
-    }
-
-    /**
-     * @return void
-     */
     private function tabTexts(): void
     {
+        $this->showBanner();
+
         $this->savedSettings = $this->getConsentSettings();
         $this->handleTextsForm();
         ?>
@@ -413,8 +306,124 @@ class CookieConsentSettings
     /**
      * @return void
      */
+    private function tabAppearance(): void
+    {
+        $this->showBanner();
+        
+        $this->handleAppearanceForm();
+        $appearance = get_option('supporthost-cookie-consent-appearance');
+        ?>
+        <form action="" method="POST">
+            <h2>
+                <label for="app-scripts"><?php _e('Appearance', 'supporthost-cookie-consent'); ?></label>
+            </h2>
+
+            <table class="form-table">
+                <tr>
+                    <th scope="row">
+                        <label for="theme"><?php _e('Theme selection', 'supporthost-cookie-consent') ?></label>
+                    </th>
+                    <td>
+                        <select name="theme" id="theme">
+                            <option value="" <?php selected( '', $appearance['theme'] ) ?>>Default</option>
+                            <option value="c_darkmode" <?php selected( 'c_darkmode', $appearance['theme'] ) ?>>Dark</option>
+                            <option value="theme_funky" <?php selected( 'theme_funky', $appearance['theme'] ) ?>>Funky</option>
+                            <option value="theme_turquoise" <?php selected( 'theme_turquoise', $appearance['theme'] ) ?>>Turquoise</option>
+                            <option value="theme_supporthost" <?php selected( 'theme_supporthost', $appearance['theme'] ) ?>>SupportHost</option>
+                        </select>
+                        <p><?php _e('Select the theme for the cookie bar and cookie setting modal.', 'supporthost-cookie-consent') ?></p>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">
+                        <label for="layout"><?php _e('Cookie bar layout style', 'supporthost-cookie-consent') ?></label>
+                    </th>
+                    <td>
+                        <select name="layout" id="layout">
+                            <option value="cloud" <?php selected( 'cloud', $appearance['layout'] ) ?>>Cloud</option>
+                            <option value="box" <?php selected( 'box', $appearance['layout'] ) ?>>Box</option>
+                            <option value="bar" <?php selected( 'bar', $appearance['layout'] ) ?>>Bar</option>
+                        </select>
+                        <p><?php _e('Select the layout for the cookie bar.', 'supporthost-cookie-consent') ?></p>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">
+                        <label for="position"><?php _e('Cookie bar position', 'supporthost-cookie-consent') ?></label>
+                    </th>
+                    <td>
+                        <select name="position" id="position">
+                            <option value="bottom left" <?php selected( 'bottom left', $appearance['position'] ) ?>>Bottom Left</option>
+                            <option value="bottom center" <?php selected( 'bottom center', $appearance['position'] ) ?>>Bottom Center</option>
+                            <option value="bottom right" <?php selected( 'bottom right', $appearance['position'] ) ?>>Bottom Right</option>
+                            <option value="middle left" <?php selected( 'middle left', $appearance['position'] ) ?>>Middle Left</option>
+                            <option value="middle center" <?php selected( 'middle center', $appearance['position'] ) ?>>Middle Center</option>
+                            <option value="middle right" <?php selected( 'middle right', $appearance['position'] ) ?>>Middle Right</option>
+                            <option value="top left" <?php selected( 'top left', $appearance['position'] ) ?>>Top Left</option>
+                            <option value="top center" <?php selected( 'top center', $appearance['position'] ) ?>>Top Center</option>
+                            <option value="top right" <?php selected( 'top right', $appearance['position'] ) ?>>Top Right</option>
+                        </select>
+                        <p><?php _e('Select the position for the cookie bar.', 'supporthost-cookie-consent') ?></p>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">
+                        <label for="transition"><?php _e('Cookie bar transition style', 'supporthost-cookie-consent') ?></label>
+                    </th>
+                    <td>
+                        <select name="transition" id="transition">
+                            <option value="zoom" <?php selected( 'zoom', $appearance['transition'] ) ?>>Zoom</option>
+                            <option value="slide" <?php selected( 'slide', $appearance['transition'] ) ?>>Slide</option>
+                        </select>
+                        <p><?php _e('Select the transition style for the cookie bar.', 'supporthost-cookie-consent') ?></p>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">
+                        <label for="settings_layout"><?php _e('Settings style', 'supporthost-cookie-consent') ?></label>
+                    </th>
+                    <td>
+                        <select name="settings_layout" id="settings_layout">
+                            <option value="box" <?php selected( 'box', $appearance['settings_layout'] ) ?>>Box</option>
+                            <option value="bar" <?php selected( 'bar', $appearance['settings_layout'] ) ?>>Bar</option>
+                        </select>
+                        <p><?php _e('Select the layout for the setting\'s dialog.', 'supporthost-cookie-consent') ?></p>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">
+                        <label for="settings_transition"><?php _e('Settings transition style', 'supporthost-cookie-consent') ?></label>
+                    </th>
+                    <td>
+                        <select name="settings_transition" id="settings_transition">
+                            <option value="zoom" <?php selected( 'zoom', $appearance['settings_transition'] ) ?>>Zoom</option>
+                            <option value="slide" <?php selected( 'slide', $appearance['settings_transition'] ) ?>>Slide</option>
+                        </select>
+                        <p><?php _e('Select the transition style for the setting\'s dialog', 'supporthost-cookie-consent') ?></p>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">
+                        <label for="force_consent"><?php _e('Force consent', 'supporthost-cookie-consent') ?></label>
+                    </th>
+                    <td>
+                        <input type="checkbox" name="force_consent" <?php checked( 'on', $appearance['force_consent'] ) ?>>
+                        <p><?php _e('If checked the user won\'t be able to interact with your website until he accepts or rejects cookies.', 'supporthost-cookie-consent') ?></p>
+                    </td>
+                </tr>
+            </table>
+            <input type="submit" name="save-settings" class="button button-primary" value="<?php _e('Save', 'supporthost-cookie-consent') ?>">
+        </form>
+        <?php
+    }
+
+    /**
+     * @return void
+     */
     private function tabSettings(): void
     {
+        $this->showBanner();
+
         $this->handleJavascriptsForm();
         ?>
             
@@ -509,146 +518,40 @@ class CookieConsentSettings
      */
     private function tabConsentReport(): void
     {
+        $this->showBanner();
+
         $this->handleConsentReportForm();
 
-        global $wpdb;
-
-        $cookieconsent = new CookieConsent;
-        $tablename = $cookieconsent->getTableName();
-
-        $customPagHTML      = "";
-        $query              = "SELECT * FROM " . $tablename . "";
-        $total_query        = "SELECT COUNT(1) FROM (${query}) AS combined_table";
-        $total              = $wpdb->get_var( $total_query );
-        $items_per_page     = 50;
-        $page               = isset( $_GET['paged'] ) ? abs( (int) $_GET['paged'] ) : 1;
-        $offset             = ( $page * $items_per_page ) - $items_per_page;
-        $result             = $wpdb->get_results( $query . " ORDER BY id DESC LIMIT ${offset}, ${items_per_page}" );
-        $totalPage          = ceil($total / $items_per_page);
-        
-        if($totalPage > 1){
-            $customPagHTML     =  '<div><span>Page '.$page.' of '.$totalPage.'</span> <br /> '.paginate_links( array(
-                'base' => add_query_arg( 'paged', '%#%' ),
-                'format' => '',
-                'prev_text' => __('&laquo;'),
-                'next_text' => __('&raquo;'),
-                'total' => $totalPage,
-                'current' => $page
-            )).'</div>';
-        }
-
+        echo '<div class="wrap"><h2>' . __('Consent report', 'supporthost-cookie-consent') . '</h2>';
+        echo '<form method="post">';
+        // Prepare table
+        $table = new CookieConsentReportTable();
+        $table->prepare_items();
         ?>
-            <form method="POST" action="">
-                <div class="tablenav top">
-                    <div class="alignleft actions bulkactions">
-                        <label for="bulk-action-selector-top" class="screen-reader-text"><?php _e('Select bulk action', 'supporthost-cookie-consent'); ?></label>
-                            <select name="action" id="bulk-action-selector-top">
-                                <option value="-1"><?php _e('Bulk actions', 'supporthost-cookie-consent'); ?></option>
-                                <option value="bulk-delete"><?php _e('Delete', 'supporthost-cookie-consent'); ?></option>
-                            </select>
-                            <input type="submit" id="doaction" class="button action" value="<?php _e('Apply', 'supporthost-cookie-consent'); ?>">
-                    </div>
-                    <div class="tablenav-pages">
-                        <span><?php _e('Total consents:', 'supporthost-cookie-consent'); ?> </span><?php echo $total ?><br />
-                        <?php echo $customPagHTML ?>
-                    </div>
-                    <br class="clear">
-                </div>
-                <table class="wp-list-table widefat fixed striped table-view-list cookielawinfo_page_cli_visitor_report">
-                    <thead>
-                    <tr>
-                        <td id="cb" class="manage-column column-cb check-column">
-                            <label class="screen-reader-text" for="cb-select-all-1"><?php _e('Select all', 'supporthost-cookie-consent'); ?></label>
-                            <input id="cb-select-all-1" type="checkbox">
-                        </td>
-                        <th scope="col" id="visitor_ip" class="manage-column column-visitor_ip column-primary"><?php _e('IP Address', 'supporthost-cookie-consent'); ?></th>
-                        <th scope="col" id="visitor_date" class="manage-column column-visitor_date"><?php _e('Visited date', 'supporthost-cookie-consent'); ?></th>
-                        <th scope="col" id="visitor_cookie" class="manage-column column-visitor_cookie"><?php _e('cookie details', 'supporthost-cookie-consent'); ?></th>
-                        <th scope="col" id="user_id" class="manage-column column-user_id"><?php _e('User ID', 'supporthost-cookie-consent'); ?></th>
-                    </tr>
-                    </thead>
 
-                    <tbody id="the-list">
-                        <?php foreach ( $result as $ip ) {
-                            $ipdata = unserialize($ip->data);
-                            $cookies = json_decode( $ip->level );
-                        ?>
-                            <tr>
-                                <th scope="row" class="check-column"><input type="checkbox" name="bulk-delete[]" value="<?php echo $ip->id ?>"></th>
-                                <td class="visitor_ip column-visitor_ip has-row-actions column-primary"><strong><?php echo $ipdata['ip'] ?></strong></td>
-                                <td class="visitor_date column-visitor_date"><strong><?php echo $ip->timestamp ?></strong></td>
-                                <td class="visitor_cookie column-visitor_cookie">
-                                    <table>
-                                        <tbody>
-                                            <?php foreach ( $cookies as $cookie ) { ?>
-                                                <tr>
-                                                    <td class="cli-report-td"> <?php echo $cookie ?></td>
-                                                    <td class="cli-report-td"> : </td>
-                                                    <td class="cli-report-td"><b>yes</b></td>
-                                                </tr>
-                                            <?php } ?>
-                                        </tbody>
-                                    </table>
-                                </td>
-                                <td class="user_id column-user_id"><strong><?php echo $ipdata['cookie_id'] ?></strong></td>
-                            </tr>
-                        <?php } ?>
-                    </tbody>
+            <input type="hidden" name="page" value="supporthost-cookie-consent-settings" />
+            <input type="hidden" name="tab" value="consent_report" />
+            <?php $table->search_box('search', 'search_id'); ?>
 
-                    <tfoot>
-                        <tr>
-                            <td class="manage-column column-cb check-column">
-                                <label class="screen-reader-text" for="cb-select-all-2"><?php _e('Select all', 'supporthost-cookie-consent'); ?></label>
-                                <input id="cb-select-all-2" type="checkbox">
-                            </td>
-                            <th scope="col" class="manage-column column-visitor_ip column-primary"><?php _e('IP Address', 'supporthost-cookie-consent'); ?></th>
-                            <th scope="col" class="manage-column column-visitor_date"><?php _e('Visited date', 'supporthost-cookie-consent'); ?></th>
-                            <th scope="col" class="manage-column column-visitor_cookie"><?php _e('cookie details', 'supporthost-cookie-consent'); ?></th>
-                            <th scope="col" class="manage-column column-user_id"><?php _e('User ID', 'supporthost-cookie-consent'); ?></th>
-                        </tr>
-                    </tfoot>
-                </table>
-            </form>
         <?php
+        // Display table
+        $table->display();
+        echo '</div></form>';
 
     }
+
 
     /**
      * @return void
      */
-    private function tabStatistics(): void
+    private function tabCookieScan(): void
     {
-        global $wpdb;
-        $consents = $wpdb->get_results('SELECT level FROM ' . CookieConsent::getTableName());
-        $countsByCategory = [];
-        $totalConsents = count($consents);
-        foreach ($consents as $consent) {
-            foreach (json_decode($consent->level, true) as $level) {
-                $countsByCategory[$level] = isset($countsByCategory[$level]) ? $countsByCategory[$level] + 1 : 1;
-            }
-        }
+        $this->showBanner();
 
-        if (0 === count($countsByCategory)) {
-            ?><?php _e('No data', 'supporthost-cookie-consent'); ?><?php
-        }
+        echo '<div class="wrap"><h2>' . __('Cookie scan', 'supporthost-cookie-consent') . '</h2>';
 
-        foreach ($countsByCategory as $categoryName => $consentsCount) {
-            $percents = round(($consentsCount / $totalConsents) * 100);
-            $label = __('Necessary', 'supporthost-cookie-consent');
-            if ('analytics' === $categoryName) {
-                $label = __('Analytics', 'supporthost-cookie-consent');
-            } elseif ('marketing' === $categoryName) {
-                $label = __('Marketing', 'supporthost-cookie-consent');
-            } elseif ('other' === $categoryName) {
-                $label = __('Other', 'supporthost-cookie-consent');
-            }
-            ?>
-            <div style="width:33%; min-width: 200px; float: left; text-align:center;">
-                <div class="pie" style="--p:<?php echo esc_html($percents); ?>;"><?php echo esc_html($percents); ?>%</div>
-                <h2><?php echo esc_html($label); ?> - <?php echo esc_html($consentsCount); ?>/<?php echo esc_html($totalConsents); ?></h2>
-            </div>
-            <?php
-        }
+        echo '<p>' . __('We are working on the automatic cookie scan, this feature will be released with the next update.', 'supporthost-cookie-consent') . '</p>';
+
     }
 
     /**
@@ -659,6 +562,8 @@ class CookieConsentSettings
      */
     private function tabImportExport(): void
     {
+        $this->showBanner();
+
         $this->handleImportForm();
         ?>
         <form action="" method="POST" enctype="multipart/form-data">
@@ -860,17 +765,62 @@ class CookieConsentSettings
     private function handleConsentReportForm(): void
     {
 
+        if ( !isset( $_POST['action'] ) )
+            return;
+
         global $wpdb;
 
         $cookieconsent = new CookieConsent;
         $table = $cookieconsent->getTableName();
 
-        if ( $_POST['action'] == 'bulk-delete' && isset( $_POST['bulk-delete'] ) ) {
-            foreach ( $_POST['bulk-delete'] as $id ) {
+        if ( $_POST['action'] == 'delete_all' && isset( $_POST['consent'] ) ) {
+            foreach ( $_POST['consent'] as $id ) {
                 $wpdb->delete( $table, array( 'id' => $id ) );
             }
-            echo '<div id="message" class="updated notice"><p>' . count( $_POST['bulk-delete'] ) . ' ' . __('records have been deleted.', 'supporthost-cookie-consent') . '</p></div>';
+            echo '<div id="message" class="updated notice"><p>' . count( $_POST['consent'] ) . ' ' . __('records have been deleted.', 'supporthost-cookie-consent') . '</p></div>';
         }
+    }
+
+    /**
+     * @return void
+     */
+    private function showBanner(): void
+    {
+        if ( strpos( gethostname(), 'svrsh' ) !== false )
+            return;
+
+        echo '<div class="banner-container">
+                <div class="logo-container">
+                    <a href="' . __('https://supporthost.com/', 'supporthost-cookie-consent') . '"><img src="https://supporthost.com/wp-content/uploads/2022/07/logo-supporthost.svg" alt="SupportHost" width="300px" style="margin-bottom:10px;" /></a>
+                    <a href="' . __('https://supporthost.com/change-hosting/', 'supporthost-cookie-consent') . '">' . __('Move to SupportHost', 'supporthost-cookie-consent') . ' </a>' . __('We will take care of<br />everything without any down!', 'supporthost-cookie-consent') . '
+                </div>
+                <div>
+                    <ul>
+                        <li>✅ ' . __('14 day free trial', 'supporthost-cookie-consent') . '</li>
+                        <li>✅ ' . __('30 days money back', 'supporthost-cookie-consent') . '</li>
+                        <li>✅ ' . __('Free website transfer', 'supporthost-cookie-consent') . '</li>
+                        <li>✅ ' . __('In the market since 2010', 'supporthost-cookie-consent') . '</li>
+                    </ul>
+                </div>
+            </div>
+            <style>
+                .banner-container {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: flex-start;
+                    font-size: 16px;
+                    color: #2b2b2b;
+                    margin-bottom: 30px;
+                    margin-top: 20px;
+                }
+                .logo-container {
+                    display: flex;
+                    margin-right: 30px;
+                    flex-direction: column;
+                    align-items: flex-start;                
+                }
+            </style>
+            ';
     }
 
     /**
@@ -913,8 +863,8 @@ class CookieConsentSettings
                             $filledRowExists = false;
                             foreach ($block['cookie_table'] as $rowsIdx => $rows) {
                                 if (!empty(array_filter($rows))) {
-                                    // $savedSettings[$availableLanguage]['settings_modal']['blocks'][$blockIdx]['cookie_table'][$rowsIdx]['is_regex'] = true;
-                                    // $savedSettings[$availableLanguage]['settings_modal']['blocks'][$blockIdx]['cookie_table'][$rowsIdx]['path'] = "/";
+                                    if ( $rows['is_regex'] == '' )
+                                        unset( $savedSettings[$availableLanguage]['settings_modal']['blocks'][$blockIdx]['cookie_table'][$rowsIdx]['is_regex'] );
                                     $filledRowExists = true;
                                     break;
                                 }

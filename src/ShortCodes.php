@@ -27,3 +27,19 @@ function supporthost_cookie_consent_sh_cookie_settings( $atts ) {
 
     return '<' . $a['tag'] . ' data-cc="c-settings" class="cc-link ' . $a['classes'] . '" aria-haspopup="dialog">' . $a['text'] . '</' . $a['tag'] . '>';
 }
+
+add_shortcode( 'sh-cookie-delete', 'supporthost_cookie_consent_sh_cookie_delete' );
+
+function supporthost_cookie_consent_sh_cookie_delete( $atts ) {
+
+    $a = shortcode_atts( array(
+        'tag' => 'button',
+        'text' => 'Delete all cookies',
+        'classes' => '',
+        ), $atts );
+
+        if ( !in_array( $a['tag'], ['a', 'button'] ) )
+            $a['tag'] = 'button';
+
+    return '<' . $a['tag'] . ' data-cc="c-delete" class="cc-delete ' . $a['classes'] . '" aria-haspopup="dialog">' . $a['text'] . '</' . $a['tag'] . '>';
+}
